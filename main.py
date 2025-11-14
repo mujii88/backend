@@ -51,7 +51,7 @@ async def upload_file(file: UploadFile):
     dense_index.upsert_records(user_namespace, records)
     time.sleep(5)
 
-    chat_link = f"http://127.0.0.1:8000/chat/{user_namespace}"
+    chat_link = f"https://backend-q71m.onrender.com/chat/{user_namespace}"
     return {
         "message": "File uploaded successfully!",
         "namespace": user_namespace,
