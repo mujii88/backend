@@ -6,8 +6,19 @@ import google.generativeai as genai
 import uuid
 import tempfile
 import time
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Initialize Pinecone
 pc = Pinecone(api_key="pcsk_6LP2Nw_JUyBgbTTn1Mntt5MbjXUBE8rKtvLkqtY6BaTcVXXAwaJ4sTPQbX5RNXF5Z12RpR")
