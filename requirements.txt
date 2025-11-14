@@ -5,4 +5,6 @@ sentence-transformers
 python-multipart
 pypdf
 langchain
+pinecone
 langchain-community
+google_generativeai
