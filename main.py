@@ -26,7 +26,7 @@ index_name = "ragsaad"
 dense_index = pc.Index(index_name)
 
 # 🔑 Configure Gemini
-genai.configure(api_key="AIzaSyB87tiRrbIRp2jCW6_aLm4Zj1nkmR2F-ew")
+genai.configure(api_key="AQ.Ab8RN6Iuu7G0_4pkIrnIvGks3m5ASqp_CrI6xY8YXU9TXewRvg")
 
 def extract_records_from_pdf(pdf_path: str):
     """Extracts text chunks from a PDF and returns structured records list."""
