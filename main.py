@@ -21,12 +21,12 @@ app.add_middleware(
 
 
 # Initialize Pinecone
-pc = Pinecone(api_key="pcsk_6LP2Nw_JUyBgbTTn1Mntt5MbjXUBE8rKtvLkqtY6BaTcVXXAwaJ4sTPQbX5RNXF5Z12RpR")
-index_name = "ragsaad"
+pc = Pinecone(api_key="ADD_PineCone_KEY_Here")
+index_name = "Your Index Name from Pinecone"
 dense_index = pc.Index(index_name)
 
 # 🔑 Configure Gemini
-genai.configure(api_key="AIzaSyChQ3LO2kR9ag_R_OK6OxhkfqrPi7Ho3ow")
+genai.configure(api_key="ADD_Gemini_Key_Here")
 
 def extract_records_from_pdf(pdf_path: str):
     """Extracts text chunks from a PDF and returns structured records list."""
