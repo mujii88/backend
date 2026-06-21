@@ -1,70 +1,88 @@
-# InstantRAG 🚀
-### RAG-as-a-Service Platform | Deploy context-aware chatbots from raw PDFs instantly
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=InstantRAG%20%F0%9F%9A%80&fontSize=80&animation=fadeIn" />
+  
+  <h3>RAG-as-a-Service Platform | Deploy context-aware chatbots from raw PDFs instantly</h3>
 
-## What is InstantRAG?
-InstantRAG is a modular Retrieval-Augmented Generation engine that lets you deploy a context-aware chatbot from any PDF in minutes — no custom backend required.
+  <p>
+    <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" alt="FastAPI"></a>
+    <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
+    <a href="https://www.pinecone.io/"><img src="https://img.shields.io/badge/Pinecone-000000?style=for-the-badge&logo=pinecone&logoColor=white" alt="Pinecone"></a>
+    <a href="https://python.langchain.com/"><img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"></a>
+    <a href="https://deepmind.google/technologies/gemini/"><img src="https://img.shields.io/badge/Gemini_2.5-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white" alt="Gemini"></a>
+  </p>
+</div>
 
-Upload a document. Ask questions. Get precise, context-grounded answers.
+---
 
-## The Problem it Solves
-Building RAG pipelines from scratch requires setting up embeddings, vector stores, chunking logic, and LLM integration every single time. InstantRAG abstracts all of that into one modular engine you can plug any document into.
+<details open>
+  <summary><b>✨ What is InstantRAG?</b></summary>
+  <br/>
+  InstantRAG is a modular Retrieval-Augmented Generation engine that lets you deploy a context-aware chatbot from any PDF in minutes — no custom backend required.
+  <br/><br/>
+  Upload a document. Ask questions. Get precise, context-grounded answers.
+</details>
 
-## Tech Stack
-- **Language:** Python
-- **LLM:** Google Gemini 2.5 Flash
-- **Vector Database:** Pinecone
-- **Embedding Model:** LLaMA Text Embed v2 (via Pinecone Inference)
-- **Document Processing:** LangChain (PyPDFLoader, RecursiveCharacterTextSplitter)
-- **API Layer:** FastAPI
+<details>
+  <summary><b>🛠️ The Problem it Solves</b></summary>
+  <br/>
+  Building RAG pipelines from scratch requires setting up embeddings, vector stores, chunking logic, and LLM integration every single time. InstantRAG abstracts all of that into one modular engine you can plug any document into.
+</details>
 
-## Key Features
-- 📄 **Instant PDF ingestion:** Automatic chunking and parsing using Langchain.
+---
+
+## 🚀 Key Features
+- 📄 **Instant PDF Ingestion:** Automatic chunking and parsing using Langchain.
 - 🔍 **Semantic Search:** Embeds queries and documents using LLaMA models and indexes them in Pinecone.
 - ⚡ **Optimized Query Latency:** Fast vector search and LLM response generation.
-- 🚀 **REST API Ready:** Immediate deployment through an interactive FastAPI UI.
+- 🧩 **REST API Ready:** Immediate deployment through an interactive FastAPI UI.
 
-## How It Works
-1. Upload a PDF via the `/upload` API endpoint.
-2. The document gets automatically chunked and embedded.
-3. Embeddings are stored in the Pinecone vector database under a unique namespace.
-4. Query the chatbot via `/chat/{namespace_id}` — it retrieves relevant chunks and feeds them to the Gemini LLM.
+## ⚙️ How It Works
+
+1. **Upload** a PDF via the `/upload` API endpoint.
+2. The document gets automatically **chunked and embedded**.
+3. Embeddings are stored in the Pinecone **vector database** under a unique namespace.
+4. **Query the chatbot** via `/chat/{namespace_id}` — it retrieves relevant chunks and feeds them to the Gemini LLM.
 5. Get precise, context-aware answers grounded in your document!
 
-## Getting Started
+---
 
-### Prerequisites
+## 💻 Getting Started
+
+<details>
+<summary><b>1️⃣ Prerequisites & Setup</b></summary>
+<br/>
+
 Make sure you have Python installed. It's recommended to use a virtual environment.
 
-### Setup Instructions
+```bash
+# Clone the repository
+git clone https://github.com/mujii88/InstantRAG
+cd InstantRAG
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/mujii88/InstantRAG
-   cd InstantRAG
-   ```
+# Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-2. **Create and activate a virtual environment (optional but recommended):**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
+# Install the dependencies
+pip install -r requirements.txt
+```
+</details>
 
-3. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+<details>
+<summary><b>2️⃣ Run the Application</b></summary>
+<br/>
 
-4. **Environment Variables:**
-   Make sure you have the required API keys for Pinecone and Google Gemini AI in the code or environment setup.
+```bash
+uvicorn main:app --reload
+```
+*Your interactive API documentation will be available at `http://127.0.0.1:8000/docs`.*
+</details>
 
-5. **Run the application:**
-   ```bash
-   uvicorn main:app --reload
-   ```
+---
 
-## API Usage
+## 🔌 API Usage
 
-### 1. Upload a Document
+### 📤 1. Upload a Document
 Uploads a PDF, indexes its chunks, and returns a unique namespace and a chat link.
 
 ```http
@@ -82,7 +100,7 @@ Content-Type: multipart/form-data
 }
 ```
 
-### 2. Query the Chatbot
+### 💬 2. Query the Chatbot
 Ask questions regarding the uploaded document.
 
 ```http
@@ -110,12 +128,7 @@ Content-Type: application/json
 }
 ```
 
-## Project Structure
-```text
-InstantRAG/
-├── main.py              # Main FastAPI application with routing and RAG logic
-├── requirements.txt     # Python dependencies
-├── README.md            # Project documentation
-├── .gitignore           # Ignored files for version control
-└── ...
-```
+---
+<div align="center">
+  <sub>Built with 💖 by Mujtaba Ahmed</sub>
+</div>
