@@ -26,7 +26,7 @@ index_name = "ragsaad"
 dense_index = pc.Index(index_name)
 
 # 🔑 Configure Gemini
-genai.configure(api_key="AQ.Ab8RN6Iuu7G0_4pkIrnIvGks3m5ASqp_CrI6xY8YXU9TXewRvg")
+genai.configure(api_key="AIzaSyChQ3LO2kR9ag_R_OK6OxhkfqrPi7Ho3ow")
 
 def extract_records_from_pdf(pdf_path: str):
     """Extracts text chunks from a PDF and returns structured records list."""
@@ -59,10 +59,10 @@ async def upload_file(file: UploadFile):
     records = extract_records_from_pdf(tmp_path)
     user_namespace = str(uuid.uuid4())
 
-    dense_index.upsert_records(user_namespace, records)
+    dense_index.upsert_records(namespace=user_namespace, records=records)
     time.sleep(5)
 
-    chat_link = f"https://backend-q71m.onrender.com/chat/{user_namespace}"
+    chat_link = f"http://127.0.0.1:8000/chat/{user_namespace}"
     return {
         "message": "File uploaded successfully!",
         "namespace": user_namespace,
@@ -118,7 +118,7 @@ async def chat(namespace_id: str, body: dict = Body(...)):
     return {
         "query": query,
         "context_snippets": [
-            {"id": match.id, "text": match.metadata.get("text", "")[:200]}
+            {"id": match.id, "text": match.metadata.get("text", "")}
             for match in results.matches
         ],
         "formatted_answer": formatted_answer
